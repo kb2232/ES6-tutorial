@@ -78,4 +78,45 @@
     console.log(areas);
 ```
   * Map helper method
-  
+    - difference betwee Map() and forEach();
+    ```
+    Well, the forEach() method doesn’t actually return anything. It simply calls a provided function on each element in your array. This callback is allowed to mutate the calling array.
+    Meanwhile, the map() method will also call a provided function on every element in the array. The difference is that map() utilizes return values and actually returns a new Array of the same size.``
+    ```
+    - examples of using map below
+    ```javascript
+    var numbers = [1,2,3];
+    //ES5 - double the array numbers and stuff it into
+    //doublenumbers [];
+
+
+    var doublenumbers = [];
+    for( var i = 0; i <numbers.length; i++)
+      doublenumbers.push(numbers[i]*2);
+    console.log(doublenumbers);
+
+    // ES6
+
+
+    var doubled = numbers.map( num => {
+      return num*2;
+    });
+    console.log(doubled);
+    /*
+    notice that map returns an array with the above example. In the for loop, we had to define the array initially;
+    */
+
+    // display speed of cars below: speed = distancee / time;
+
+    
+    var trips = [
+      { distance: 34, time: 10 },
+      { distance: 90, time: 50 },
+      { distance: 59, time: 25 }
+    ];
+
+    var speeds = trips.map(trip => {
+      return trip.distance/trip.time;
+    });
+    console.log("speed = ",speeds);
+    ```
