@@ -77,3 +77,5 @@
     }
     console.log(areas);
 ```
+  * Map helper method
+  
