@@ -120,3 +120,53 @@
     });
     console.log("speed = ",speeds);
     ```
+  * filter helper method
+    - examples
+  ```javascript
+  var products = [
+  { name: 'cucumber', type: 'vegetable'},
+  { name: 'banana', type: 'fruit'},
+  { name: 'celery', type: 'vegetable'},
+  { name: 'orange', type: 'fruit'}
+];
+
+// say a user only wants to see vegetable and not fruits.
+// how would we display this list?
+
+// ES5
+var filteredProd = [];
+for(var i = 0; i<products.length; i++)
+{
+  if(products[i].type == 'vegetable')
+    filteredProd.push(products[i]);
+}
+console.log(filteredProd);
+
+// ES6 - USING filter
+// like map, filter returns and array
+
+var filtered = products.filter(product => {
+  return product.type === 'fruit';
+});
+console.log(filtered);
+
+// more hard example:
+/*
+Given a list of comments and a specific post, return just the content about the post
+*/
+var post = { id:4, title:'new post'};
+var comments = [
+  { postID: 4, content: ' awesome post' },
+  { postID: 1, content: ' ugly hair' },
+  { postID: 2, content: ' thats fat1' },
+  { postID: 4, content: ' very neat trick' }
+];
+
+var commentsForPost = (comments, post) => {
+   return comments.filter( comment => {
+    return post.id === comment.postID;
+  });
+}
+
+console.log(commentsForPost(comments,post));
+```
