@@ -128,48 +128,48 @@
   { name: 'banana', type: 'fruit'},
   { name: 'celery', type: 'vegetable'},
   { name: 'orange', type: 'fruit'}
-];
+  ];
 
-// say a user only wants to see vegetable and not fruits.
-// how would we display this list?
+  // say a user only wants to see vegetable and not fruits.
+  // how would we display this list?
 
-// ES5
-var filteredProd = [];
-for(var i = 0; i<products.length; i++)
-{
-  if(products[i].type == 'vegetable')
-    filteredProd.push(products[i]);
-}
-console.log(filteredProd);
+  // ES5
+  var filteredProd = [];
+  for(var i = 0; i<products.length; i++)
+  {
+    if(products[i].type == 'vegetable')
+      filteredProd.push(products[i]);
+  }
+  console.log(filteredProd);
 
-// ES6 - USING filter
-// like map, filter returns and array
+  // ES6 - USING filter
+  // like map, filter returns and array
 
-var filtered = products.filter(product => {
-  return product.type === 'fruit';
-});
-console.log(filtered);
-
-// more hard example:
-/*
-Given a list of comments and a specific post, return just the content about the post
-*/
-var post = { id:4, title:'new post'};
-var comments = [
-  { postID: 4, content: ' awesome post' },
-  { postID: 1, content: ' ugly hair' },
-  { postID: 2, content: ' thats fat1' },
-  { postID: 4, content: ' very neat trick' }
-];
-
-var commentsForPost = (comments, post) => {
-   return comments.filter( comment => {
-    return post.id === comment.postID;
+  var filtered = products.filter(product => {
+    return product.type === 'fruit';
   });
-}
+  console.log(filtered);
 
-console.log(commentsForPost(comments,post));
-```
+  // more hard example:
+  /*
+  Given a list of comments and a specific post, return just the content about the post
+  */
+  var post = { id:4, title:'new post'};
+  var comments = [
+    { postID: 4, content: ' awesome post' },
+    { postID: 1, content: ' ugly hair' },
+    { postID: 2, content: ' thats fat1' },
+    { postID: 4, content: ' very neat trick' }
+  ];
+
+  var commentsForPost = (comments, post) => {
+    return comments.filter( comment => {
+      return post.id === comment.postID;
+    });
+  }
+
+  console.log(commentsForPost(comments,post));
+    ```
   * find help method
   ```javascript
   // search through an array to find an element
@@ -224,3 +224,51 @@ console.log(commentsForPost(comments,post));
   });
   console.log("bool: ",bool);
   ```
+  * REDUCE helper method - last helper method 
+  ```javascript
+  var numbers = [ 10, 20, 30];
+
+  /*
+  numbers.reduce((variable-for-initial-value, each-element)=>{
+    return (iterator function);
+  },initial-value)
+  */
+
+  const total = numbers.reduce((sum,num)=>{
+    return sum+num;
+  },0);
+  console.log("total=",total);
+
+  var colors = [
+  { color: ' red ', id: 1},
+  { color: ' blue ', id: 2},
+  { color: ' yellow ', id: 3},
+  { color: ' pink ', id: 4}
+  ];
+
+  /*
+  array.reduce((variable-for-initial-value, each-element)=>{
+    return (iterator function);
+  },initial-value)
+  */
+
+  // goal - obtain: ['red','blue','yellow','pink'];
+  const arr = colors.reduce((accumulator,color) => {
+    accumulator.push(color.color);
+    return accumulator;
+  },[]);
+  console.log("arr=",arr);
+
+  // balance paranthesis example
+  function balanceParen(str)
+  {
+    return !str.split("").reduce((acc,char)=>{
+      if(acc < 0) return acc;
+      if(char === "(") ++acc;
+      if(char === ")") --acc;
+      return acc;
+    },0);
+  }
+  console.log(balanceParen("()()"))
+  ```
+# Const and LET
