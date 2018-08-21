@@ -201,5 +201,26 @@ console.log(commentsForPost(comments,post));
   });
   console.log(newuser);
   ```
+  * "every" helper method
+  ```javascript
+  // it is like "AND" condition; if x && y && z && ...
+  const bool = computers.every( comp => {
+    return comp.ram > 16;
+  });
+  console.log("bool: ",bool);
+  ```
 
+  * "some" helper method
+  ```javascript
+  // it is like "OR" condition; if x || y || z || ...
+  var computers = [
+    { name:'apple',ram:20},
+    { name:'compaq',ram:4},
+    { name:'acer',ram:32}
+  ]
 
+  const bool = computers.some( comp => {
+    return comp.ram > 16;
+  });
+  console.log("bool: ",bool);
+  ```
