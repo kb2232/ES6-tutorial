@@ -272,3 +272,6 @@
   console.log(balanceParen("()()"))
   ```
 # Const and LET
+  1. const - is used when we expect the variable to never change;
+  2. let - is used when we expect the variable to change;
+  3. we do not use VAR any more
