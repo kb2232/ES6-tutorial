@@ -359,4 +359,51 @@
   console.log("value2 = ",value2,"\ntitle price2 = ",price2)
   ```
   # default function arguments
-  
+  ```javascript
+      // node default method
+    function makeAjaxRequest(url, method)
+    {
+      if(!method) method='GET';
+      //login to make request
+      console.log(method);
+
+    }
+
+    // Default argument methods
+    function makeAjaxRequest2(url, method='GET')
+    {
+      //login to make request
+      console.log(method);
+    }
+
+    //test
+    makeAjaxRequest('google.com');
+    makeAjaxRequest('google.com','POST');
+    makeAjaxRequest2('google.com');
+    makeAjaxRequest2('google.com','POST');
+
+    /// more pronounced cases;
+    class User
+    {
+      constructor(id)
+      {
+        this.id = id;
+      }
+      generateId()
+      {
+        return Math.random()*9999999;
+      }
+      createAdmin(userid = this.generateId(),type=0)
+      {
+        newuser = {
+          id:userid
+        };
+        (type===1)?newuser.admin=true:newuser.admin = false;
+        console.log(newuser);
+      }
+    }
+
+    let newuser = new User();
+
+    newuser.createAdmin(newuser.generateId(),1);
+  ```
