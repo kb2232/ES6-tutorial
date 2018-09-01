@@ -407,3 +407,150 @@
 
     newuser.createAdmin(newuser.generateId(),1);
   ```
+  # rest and spread operator
+  ```javascript
+    function addnumbers(numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers([1,2,3,4,5,6]));
+
+    // using "..." - this is called "spread" operator
+    // below is the REST method - using it in a function
+    function addnumbers2( ...numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers2(1,2,3,4,5,6));
+    // using the spread operator and why it is important
+    function addnumbers(numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers([1,2,3,4,5,6]));
+
+    // using ... rest method
+    function addnumbers2( ...numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers2(1,2,3,4,5,6));
+  ```
+  # DESTRUCTING 
+  ```javascript
+    /////DESTRUCTING
+
+    const expense = {
+      type:'Business',
+      amount:'$50.00 USD',
+      type1:'Business',
+      amount1:'$55.00 USD',
+      type2:'Business',
+      amount2:'$60.00 USD',
+    }
+
+    // using es5
+    var type = expense.type;
+    var amount = expense.amount;
+
+    // using es6
+    const { type1 } = expense;
+    const { amount1 } = expense;
+
+    // using ES6 and destructing
+    // the name of the variable MUST equal to the property names in 'expense'
+    const { type2, amount2 } = expense;
+
+    console.log(type2,"\n",amount2);
+  ```
+  * more on destructing
+``` javascript
+    //// more realistic example
+    /// pulling properties of objects
+    const savedFile = {
+      name:'repost',
+      size: 140,
+      extension: 'jpg',
+    }
+
+    // using es6 without destructing
+    const filesummary = file =>`The file ${file.name}.${file.extension} is of size ${file.size}.`;
+    console.log(filesummary(savedFile));
+    // using es6 with destructing
+    const filesummary2 = ({name, size,extension})=>`The file ${name}.${extension} is of size ${size}.`; 
+    console.log(filesummary2(savedFile));
+```
+  * pulling properties of arrays
+  ```javascript
+    const company = [
+    'google',
+    'facebook',
+    'Uber',
+    ]
+    const [n1,n2,n3] = company;
+    console.log(n1,n2,n3);
+  ```
+  * pulling properties of arrays and objects
+  ```javascript
+    const companies = [
+      { name: 'google', location:'mountain view'},
+      { name: 'facebook', location:'menlo park'},
+      { name: 'uber', location:'san francisco'},
+    ];
+
+    const [{name, location}] = companies;
+    console.log(`${name}'s location is at ${location}`);
+  ```
+# classes
+```javascript
+  class Car
+  {
+    constructor({ title })
+    {
+      this.title = title;
+    }
+    drivesound()
+    {
+      return 'vrroooom';
+    }
+    summary({make,year,price})
+    {
+      const user = {
+        title: this.title,
+        sound:this.drivesound(),
+        make,
+        year,
+        price,
+      }
+      return user;
+    }
+  }
+
+  options = {
+    title: 'honda 2019 x1',
+    make:'honda',
+    year:2019,
+    price:'$40000 USD',
+  }
+
+  let car1 = new Car(options);
+
+  console.log(car1);
+  console.log(car1.summary(options));
+```
+  * inheritance
+  ```javascript
+    const options2 = {
+      title:"toyota llx 2020",
+    }
+
+    class toyota extends Car{
+      constructor(options2,price)
+      {
+        super(options2);
+        this.price = price;
+      }
+    }
+    let toyota1 = new toyota(options2,'$43000');
+    console.log("toyota: ",toyota1);
+  ```
