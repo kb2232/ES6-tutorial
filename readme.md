@@ -407,3 +407,32 @@
 
     newuser.createAdmin(newuser.generateId(),1);
   ```
+  # rest and spread operator
+  ```javascript
+    function addnumbers(numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers([1,2,3,4,5,6]));
+
+    // using "..." - this is called "spread" operator
+    // below is the REST method - using it in a function
+    function addnumbers2( ...numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers2(1,2,3,4,5,6));
+    // using the spread operator and why it is important
+    function addnumbers(numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers([1,2,3,4,5,6]));
+
+    // using ... rest method
+    function addnumbers2( ...numbers)
+    {
+      return numbers.reduce((initial,number)=>initial+number,0);
+    }
+    console.log(addnumbers2(1,2,3,4,5,6));
+  ```
