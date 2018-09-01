@@ -436,3 +436,68 @@
     }
     console.log(addnumbers2(1,2,3,4,5,6));
   ```
+  # DESTRUCTING 
+  ```javascript
+    /////DESTRUCTING
+
+    const expense = {
+      type:'Business',
+      amount:'$50.00 USD',
+      type1:'Business',
+      amount1:'$55.00 USD',
+      type2:'Business',
+      amount2:'$60.00 USD',
+    }
+
+    // using es5
+    var type = expense.type;
+    var amount = expense.amount;
+
+    // using es6
+    const { type1 } = expense;
+    const { amount1 } = expense;
+
+    // using ES6 and destructing
+    // the name of the variable MUST equal to the property names in 'expense'
+    const { type2, amount2 } = expense;
+
+    console.log(type2,"\n",amount2);
+  ```
+  * more on destructing
+``` javascript
+    //// more realistic example
+    /// pulling properties of objects
+    const savedFile = {
+      name:'repost',
+      size: 140,
+      extension: 'jpg',
+    }
+
+    // using es6 without destructing
+    const filesummary = file =>`The file ${file.name}.${file.extension} is of size ${file.size}.`;
+    console.log(filesummary(savedFile));
+    // using es6 with destructing
+    const filesummary2 = ({name, size,extension})=>`The file ${name}.${extension} is of size ${size}.`; 
+    console.log(filesummary2(savedFile));
+```
+  * pulling properties of arrays
+  ```javascript
+    const company = [
+    'google',
+    'facebook',
+    'Uber',
+    ]
+    const [n1,n2,n3] = company;
+    console.log(n1,n2,n3);
+  ```
+  * pulling properties of arrays and objects
+  ```javascript
+    const companies = [
+      { name: 'google', location:'mountain view'},
+      { name: 'facebook', location:'menlo park'},
+      { name: 'uber', location:'san francisco'},
+    ];
+
+    const [{name, location}] = companies;
+    console.log(`${name}'s location is at ${location}`);
+  ```
