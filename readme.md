@@ -275,3 +275,40 @@
   1. const - is used when we expect the variable to never change;
   2. let - is used when we expect the variable to change;
   3. we do not use VAR any more
+# Back Ticks
+  ```javascript
+  // 1. back ticks
+  const yer = ()=>{
+    const yr = new Date().getFullYear();
+    return `the year is ${yr}`;
+  }
+  console.log(yer());
+  ```
+# Array functions
+```javascript
+    // ES5
+      // Below is a single expression.
+    function sum(a,b)
+    {
+      return a+b;
+    }
+    console.log("sum=",sum(1,2));
+
+    // ES6
+      // single expression - implicit return;
+    const sum1 = (a,b) => (a+b);
+    console.log("sum1(es6)=",sum1(1,2));
+
+    // ES6
+      // single expression - implicit return - self called
+    const sum2 = ((a,b) => (a+b))(1,2);
+    console.log("sum2=",sum2);
+
+    // takes a num and returns double of it;
+    const double = (num => (2*num))(2);
+    console.log(double);
+
+    // advance use
+    const res = numbers.map(num=>2*num);
+    console.log(res);
+```
