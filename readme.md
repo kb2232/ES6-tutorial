@@ -120,3 +120,195 @@
     });
     console.log("speed = ",speeds);
     ```
+  * filter helper method
+    - examples
+  ```javascript
+  var products = [
+  { name: 'cucumber', type: 'vegetable'},
+  { name: 'banana', type: 'fruit'},
+  { name: 'celery', type: 'vegetable'},
+  { name: 'orange', type: 'fruit'}
+  ];
+
+  // say a user only wants to see vegetable and not fruits.
+  // how would we display this list?
+
+  // ES5
+  var filteredProd = [];
+  for(var i = 0; i<products.length; i++)
+  {
+    if(products[i].type == 'vegetable')
+      filteredProd.push(products[i]);
+  }
+  console.log(filteredProd);
+
+  // ES6 - USING filter
+  // like map, filter returns and array
+
+  var filtered = products.filter(product => {
+    return product.type === 'fruit';
+  });
+  console.log(filtered);
+
+  // more hard example:
+  /*
+  Given a list of comments and a specific post, return just the content about the post
+  */
+  var post = { id:4, title:'new post'};
+  var comments = [
+    { postID: 4, content: ' awesome post' },
+    { postID: 1, content: ' ugly hair' },
+    { postID: 2, content: ' thats fat1' },
+    { postID: 4, content: ' very neat trick' }
+  ];
+
+  var commentsForPost = (comments, post) => {
+    return comments.filter( comment => {
+      return post.id === comment.postID;
+    });
+  }
+
+  console.log(commentsForPost(comments,post));
+    ```
+  * find help method
+  ```javascript
+  // search through an array to find an element
+  var users = [
+    { name:"kunle", id:2},
+    { name:"alex", id:3},
+    { name:"jack", id:1},
+    { name:"alex",id:4}
+  ];
+
+  // ES5
+  // search for Alex
+  // the for loop method will look for all occurrences;
+  founded = [];
+  for( var i = 0; i<users.length; i++)
+  {
+    if(users[i].name === "alex")
+    {
+      founded.push(users[i]);
+    }
+  }
+  console.log(founded);
+
+  // ES6
+  // .find() requires a return statement; it returns the element once it finds it;
+  // the find method only returns the first case;
+  const newuser = users.find( user => {
+    return user.name === "alex";
+  });
+  console.log(newuser);
+  ```
+  * "every" helper method
+  ```javascript
+  // it is like "AND" condition; if x && y && z && ...
+  const bool = computers.every( comp => {
+    return comp.ram > 16;
+  });
+  console.log("bool: ",bool);
+  ```
+
+  * "some" helper method
+  ```javascript
+  // it is like "OR" condition; if x || y || z || ...
+  var computers = [
+    { name:'apple',ram:20},
+    { name:'compaq',ram:4},
+    { name:'acer',ram:32}
+  ]
+
+  const bool = computers.some( comp => {
+    return comp.ram > 16;
+  });
+  console.log("bool: ",bool);
+  ```
+  * REDUCE helper method - last helper method 
+  ```javascript
+  var numbers = [ 10, 20, 30];
+
+  /*
+  numbers.reduce((variable-for-initial-value, each-element)=>{
+    return (iterator function);
+  },initial-value)
+  */
+
+  const total = numbers.reduce((sum,num)=>{
+    return sum+num;
+  },0);
+  console.log("total=",total);
+
+  var colors = [
+  { color: ' red ', id: 1},
+  { color: ' blue ', id: 2},
+  { color: ' yellow ', id: 3},
+  { color: ' pink ', id: 4}
+  ];
+
+  /*
+  array.reduce((variable-for-initial-value, each-element)=>{
+    return (iterator function);
+  },initial-value)
+  */
+
+  // goal - obtain: ['red','blue','yellow','pink'];
+  const arr = colors.reduce((accumulator,color) => {
+    accumulator.push(color.color);
+    return accumulator;
+  },[]);
+  console.log("arr=",arr);
+
+  // balance paranthesis example
+  function balanceParen(str)
+  {
+    return !str.split("").reduce((acc,char)=>{
+      if(acc < 0) return acc;
+      if(char === "(") ++acc;
+      if(char === ")") --acc;
+      return acc;
+    },0);
+  }
+  console.log(balanceParen("()()"))
+  ```
+# Const and LET
+  1. const - is used when we expect the variable to never change;
+  2. let - is used when we expect the variable to change;
+  3. we do not use VAR any more
+# Back Ticks
+  ```javascript
+  // 1. back ticks
+  const yer = ()=>{
+    const yr = new Date().getFullYear();
+    return `the year is ${yr}`;
+  }
+  console.log(yer());
+  ```
+# Array functions
+```javascript
+    // ES5
+      // Below is a single expression.
+    function sum(a,b)
+    {
+      return a+b;
+    }
+    console.log("sum=",sum(1,2));
+
+    // ES6
+      // single expression - implicit return;
+    const sum1 = (a,b) => (a+b);
+    console.log("sum1(es6)=",sum1(1,2));
+
+    // ES6
+      // single expression - implicit return - self called
+    const sum2 = ((a,b) => (a+b))(1,2);
+    console.log("sum2=",sum2);
+
+    // takes a num and returns double of it;
+    const double = (num => (2*num))(2);
+    console.log(double);
+
+    // advance use
+    const res = numbers.map(num=>2*num);
+    console.log(res);
+```
