@@ -554,3 +554,14 @@
     let toyota1 = new toyota(options2,'$43000');
     console.log("toyota: ",toyota1);
   ```
+# generators
+  * for..of loop: iterating through array of data
+    ```javascript
+    const colors = [
+    'red', 'blue','yellow','green'
+    ];
+    for(let color of colors)
+    {
+      console.log(color);
+    }
+    ```
