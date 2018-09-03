@@ -8,6 +8,6 @@ function *numbers()
   yield;
 }
 
-const gen = numbers();
-console.log(gen.next());
-console.log(gen.next());
+const gens = numbers();
+console.log(gens.next());
+console.log(gens.next());

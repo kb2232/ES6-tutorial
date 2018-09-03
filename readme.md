@@ -573,7 +573,7 @@
       2. 
     */
 
-    
+
     function *numbers()
     {
       yield;
@@ -582,4 +582,24 @@
     const gen = numbers();
     console.log(gen.next());
     console.log(gen.next());
+
+    //more example
+    // example 2
+
+    function *add(n)
+    {
+      yield n;
+      yield n + 10;
+    }
+    const gen = add(5);
+    console.log(gen.next());
+    console.log(gen.next());
+    console.log(gen.next());
+
+    //output of above
+    /*
+    { value: 5, done: false }
+    { value: 15, done: false }
+    { value: undefined, done: true }
+    */
     ```
