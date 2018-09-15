@@ -744,3 +744,70 @@
   console.log(values);
   ```
 # PROMISES AND FETCH
+  * promise terminology
+  ```
+    Javascript executes your code line by line WITH no pauses.
+    Promises allows you to wait OR pause before executing the next code
+
+    There are tree states of Promise:
+    1. unresolved - waiting for something to finish
+    2. resolved - something finished and all went well
+      a. then() - this is a callback to CATCH the result of what went well.
+    3. rejected - something finished and something went bad
+      a. catch() - this is a callback to CATCH something that went bad.
+  ```
+  * simply promise
+  ```javascript
+  // the browser supports the term 'promise'
+  // the browser also knows terms resolved and reject
+  promise = new Promise((resolve,reject)=>{
+    resolve();
+  });
+  // i am basically telling the browser that everything went well.
+  console.log(promise);
+  ```
+  * .then()
+  ```javascript
+  // the browser supports the term 'promise'
+  // the browser also knows terms resolved and reject
+  promise = new Promise((resolve,reject)=>{
+    resolve();
+  });
+  // i am basically telling the browser that everything went well.
+  // and only run functions passed into it with .then()
+  promise
+    .then(()=>console.log("all went well"))
+    .then(()=>console.log("this was also done"))
+    .catch(()=>console.log("something went wrong"));
+  ```
+  * .catch() 
+  ```javascript
+  // the browser supports the term 'promise'
+  // the browser also knows terms resolved and reject
+  promise = new Promise((resolve,reject)=>{
+    reject();
+  });
+  // i am basically telling the browser that everything went well.
+  // and only run functions passed into it with .then()
+  promise
+    .then(()=>console.log("all went well"))
+    .then(()=>console.log("this was also done"))
+    .catch(()=>console.log("something went wrong"));
+  ```
+  * simulate long running process
+  ```javascript
+  // the browser supports the term 'promise'
+  // the browser also knows terms resolved and reject
+  promise = new Promise((resolve,reject)=>{
+  // wait three seconds
+  setTimeout(()=>{
+    resolve();
+  },3000)
+  });
+  // i am basically telling the browser that everything went well.
+  // and only run functions passed into it with .then()
+  promise
+    .then(()=>console.log("all went well"))
+    .then(()=>console.log("this was also done"))
+    .catch(()=>console.log("something went wrong"));
+  ```
