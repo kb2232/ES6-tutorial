@@ -603,3 +603,99 @@
     { value: undefined, done: true }
     */
     ```
+    * generators 2
+    ```javascript
+    // let us image we have a list of stuff but we want to iterate over just a few of those stuffs
+
+    const team = {
+      size: 6,
+      department: 'engineer',
+      lead: 'Anthony',
+      manager: 'Kunle',
+      engineers: 'anthony, kunle, michael, sean, ronak, yesenia, rommel, george, etc.',
+    };
+    function *nameIter({lead,manager,engineers})
+    {
+      yield lead;
+      yield manager;
+      yield engineers;
+    }
+    const myteam = [];
+    for(let x of nameIter(team))
+    {
+      myteam.push([x]);
+    }
+    console.log(myteam);
+    ```
+  * mulltiple generators
+  ```javascript
+  const testTeam = {
+  lead: 'ronak',
+  testers: 'Shiela, max, john, amrry',
+  }
+  const team2 = {
+    testTeam,
+    size: 6,
+    department: 'engineer',
+    lead: 'Anthony',
+    manager: 'Kunle',
+    engineers: 'anthony, kunle, michael, sean, ronak, yesenia, rommel, george, etc.',
+  };
+
+  // iterate over lead, manager, engineers and entire testing team;
+  function *team2Iter(team2)
+  {
+    yield team2.lead;
+    yield team2.manager;
+    yield team2.engineers;
+    yield *testTeamIter(team2.testTeam);
+  }
+  // iterate over test team data structure
+  function *testTeamIter({lead, testers})
+  {
+    yield lead;
+    yield testers;
+  }
+  const container = [];
+
+  for(let it of team2Iter(team2))
+  {
+    container.push([it]);
+  }
+  console.log(container);
+  ```
+  * symbol iterator
+  ```javascript
+    // symbol iterator - helps with refactor
+
+  const testTeam = {
+    lead: 'ronak',
+    testers: 'Shiela, max, john, amrry',
+    //just incase you try to iterate this - i will only give you access to testers;
+    [Symbol.iterator]: function* (){
+      yield this.testers;
+    }
+  }
+  const team2 = {
+    testTeam,
+    size: 6,
+    department: 'engineer',
+    lead: 'Anthony',
+    manager: 'Kunle',
+    engineers: 'anthony, kunle, michael, sean, ronak, yesenia, rommel, george, etc.',
+    [Symbol.iterator]: function* (){
+      yield this.lead;
+      yield this.manager;
+      yield this.engineers;
+      yield *this.testTeam;
+    }
+  };
+
+  const container = [];
+
+  for(let it of team2)
+  {
+    container.push([it]);
+  }
+  console.log(container);
+  ```
